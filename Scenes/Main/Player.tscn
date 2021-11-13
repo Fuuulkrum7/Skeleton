@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Animations/Skeleton.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.88232, 15.5894 )
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
+script = ExtResource( 2 )
+A = 240
+G = 300
+MAX_SPEED = 200
+MAX_RUN_SPEED = 300
+MAX_FALLING_SPEED = 600
+MAX_JUMP_SPEED = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.148651, 2.67572 )
+shape = SubResource( 1 )
+
+[node name="AnimSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "StartJump"
+frame = 1
+playing = true

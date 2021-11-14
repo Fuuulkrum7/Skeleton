@@ -16,13 +16,30 @@ var spr
 
 func _ready():
 	Global.Player = self
-	spr = $AnimSprite
+	spr = $Body/AnimSprite
+
+func set_it(anim):
+	if spr.animation != anim:
+		print("anim: ", anim)
+		spr.animation = anim
 
 
 func set_anim(anim):
-	if spr.animation != anim:
-		print(anim)
-		spr.animation = anim
+	var main_list = ["StartJump", "Fall"]
+	
+	if anim in main_list:
+		set_it(anim)
+		return
+	
+	if "Attack" in [spr.animation, anim]:
+		spr.get_child(0).visible = true
+		speed = 0
+		
+		if spr.frame == 5:
+			spr.animation = "Default"
+	
+	if not "Attack" in spr.animation or spr.frame == 5:
+		set_it(anim)
 
 
 func _physics_process(delta):
@@ -51,16 +68,18 @@ func _physics_process(delta):
 		speed = 0
 	
 	if is_on_ceiling():
-		current_falling_speed = -current_falling_speed
+		current_falling_speed = 0
 	
 	if is_on_floor():
 		current_falling_speed = 0
 		
 		if Input.is_action_pressed("jump"):
 			current_falling_speed = -MAX_JUMP_SPEED
-			
+		
 		if current_falling_speed < 0:
 			set_anim("StartJump")
+		elif Input.is_action_pressed("sAttack"):
+			set_anim("StandartAttack")
 		elif velocity == 0:
 			set_anim("Ready")
 		elif max_speed != MAX_SPEED:
@@ -81,3 +100,7 @@ func _physics_process(delta):
 		speed = 0
 	
 	move_and_slide(Vector2(speed, current_falling_speed), Vector2.UP)
+
+
+func _on_Attack_body_entered(body):
+	print(body.name)

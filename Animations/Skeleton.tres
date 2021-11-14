@@ -28,6 +28,21 @@
 
 [resource]
 animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 23 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "StandartAttack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "Default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Run",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 21 ), ExtResource( 13 ) ],
 "loop": false,
 "name": "StartJump",
@@ -48,23 +63,8 @@ animations = [ {
 "name": "StopJump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 23 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "StandartAttack",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "Run",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "Default",
 "speed": 5.0
 } ]

@@ -4,24 +4,37 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9.88232, 15.5894 )
+extents = Vector2( 15.026, 4.66554 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
-A = 350
-G = 400
+A = 450
+G = 550
 MAX_SPEED = 250
 MAX_RUN_SPEED = 350
 MAX_FALLING_SPEED = 700
 MAX_JUMP_SPEED = 500
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.148651, 2.67572 )
+[node name="Body" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 1.78489 )
+scale = Vector2( 0.933333, 1.64851 )
+build_mode = 1
+polygon = PoolVector2Array( -2.42297, -8.76163, 1.33127, -8.82911, 2.70186, -7.54704, 2.76486, -5.43499, 4.6589, -4.18392, 4.97457, -3.04009, 9.70966, -2.68264, 9.83593, 2.1429, 4.75868, 3.483, 8.94278, 10.0106, -9.16757, 9.93526, -5.06382, 3.8229, -10.2409, 0.141194, -7.77861, -4.14818, -6.45278, -5.07754, -3.99053, -5.18477, -3.86426, -7.43669 )
+
+[node name="AnimSprite" type="AnimatedSprite" parent="Body"]
+position = Vector2( 0, -1.08273 )
+scale = Vector2( 1.07143, 0.606609 )
+frames = ExtResource( 1 )
+animation = "Ready"
+frame = 2
+playing = true
+
+[node name="Attack" type="Area2D" parent="Body/AnimSprite"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/AnimSprite/Attack"]
+position = Vector2( 25, -1.46991 )
 shape = SubResource( 1 )
 
-[node name="AnimSprite" type="AnimatedSprite" parent="."]
-frames = ExtResource( 1 )
-animation = "StartJump"
-frame = 1
-playing = true
+[connection signal="body_entered" from="Body/AnimSprite/Attack" to="." method="_on_Attack_body_entered"]

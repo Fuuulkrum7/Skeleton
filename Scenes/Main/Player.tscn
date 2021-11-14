@@ -9,12 +9,12 @@ extents = Vector2( 9.88232, 15.5894 )
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
-A = 240
-G = 300
-MAX_SPEED = 200
-MAX_RUN_SPEED = 300
-MAX_FALLING_SPEED = 600
-MAX_JUMP_SPEED = 400
+A = 350
+G = 400
+MAX_SPEED = 250
+MAX_RUN_SPEED = 350
+MAX_FALLING_SPEED = 700
+MAX_JUMP_SPEED = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.148651, 2.67572 )
